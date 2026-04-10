@@ -72,13 +72,13 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids = [aws_security_group.app_sg.id]
 
   tags = {
-    Name = "php-docker-server"
+    Name = "php-testing-server"
   }
 }
 
 # 🗄️ RDS MySQL
 resource "aws_db_instance" "mysql_db" {
-  identifier         = "new-db"
+  identifier         = "feedback-db"
   engine             = "mysql"
   instance_class     = "db.t3.micro"
   allocated_storage  = 20
