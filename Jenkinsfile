@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     environment {
-        ECR_REPO = "123456789012.dkr.ecr.eu-north-1.amazonaws.com/feedback-app-repo"
         REGION = "eu-north-1"
+        ACCOUNT_ID = "428185450398"
         IMAGE_NAME = "feedbackapp"
+        ECR_REPO = "${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/feedback-app-repo"
+        ECR_REGISTRY = "${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com"
     }
 
     stages {
@@ -34,7 +36,7 @@ pipeline {
                     export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
                     aws ecr get-login-password --region $REGION | \
-                    docker login --username AWS --password-stdin $ECR_REPO
+                    docker login --username AWS --password-stdin $ECR_REGISTRY
                     '''
                 }
             }
