@@ -17,11 +17,11 @@ pipeline {
 
                 docker run -d -p 8002:80 \
                 --name feedback-app \
-                --env-file /var/lib/jenkins/.env
+                --env-file /var/lib/jenkins/.env \
                 feedbackapp
                 '''
             }
-        }
+        }  
 
     }
 }
