@@ -7,14 +7,6 @@ pipeline {
         AWS_DEFAULT_REGION = "eu-north-1"
     }
 
-    stages {
-
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/priyanshijat/Feedback-application.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t feedbackapp .'
